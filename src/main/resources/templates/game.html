@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blackjack</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style></style>
+</head>
+<body>
+<div id="container" align="center">
+    <h1>Blackjack</h1>
+
+    <form action="#" th:action="@{/greeting}" th:object="${game}" method="post">
+        <div>
+            <p>You gave: <input type="text" th:field="*{playerScore}" readonly="readonly"/></p>
+            <table th:each="card : ${game.playerCards}">
+                <tr th:text="${card}"></tr>
+            </table>
+        </div>
+        <p></p>
+        <div>
+            <p>Dealer has: </p>
+            <p></p>
+            <tr th:text="*{firstDealerCard}"></tr>
+        </div>
+        <p></p>
+        <p></p>
+        <button type="submit" class="btn btn-primary"> Hit</button>
+    </form>
+    <form action="#" th:action="@{/dealer}" th:object="${game}" method="post">
+        <button type="submit" class="btn btn-danger"> Stop</button>
+    </form>
+</div>
+</body>
+</html>
